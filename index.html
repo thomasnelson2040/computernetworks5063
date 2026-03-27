@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Networks Project Site B</title>
+    <title>Networking Research Study</title>
 
-    <!-- Google tag (gtag.js) -->
+        <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-7S3VX96XH7"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -23,57 +23,143 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-5CRFW3PV');</script>
 <!-- End Google Tag Manager -->
 
+    
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="ed2b8d7a-bc19-4bf5-bba2-759a91ace3a7" data-blockingmode="auto" type="text/javascript"></script>
+
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #f4f4f9; }
-        h1 { color: #252e39; margin-bottom: 30px; }
-        .form-button { background-color: #8e44ad; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #f8f9fa; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            margin: 0; 
+        }
+
+        .card { 
+            background: white; 
+            padding: 2rem; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1); 
+            text-align: center; 
+            max-width: 400px; 
+            z-index: 1; /* Lower than banner */
+        }
+
+        .form-button { 
+            display: inline-block;
+            background-color: #8e44ad; 
+            color: white; 
+            padding: 15px 30px; 
+            text-decoration: none; 
+            border-radius: 8px; 
+            font-weight: bold; 
+            font-size: 1.1rem; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+            transition: transform 0.2s; 
+            margin-top: 20px;
+        }
+
         .form-button:hover { transform: scale(1.05); background-color: #732d91; }
         
-        /* Banner Styles */
-        #cookie-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 500px; background: #252e39; color: white; padding: 20px; border-radius: 12px; display: none; box-shadow: 0 10px 25px rgba(0,0,0,0.3); text-align: center; z-index: 1000; }
-        #accept-btn { background: #8e44ad; color: white; border: none; padding: 10px 40px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 10px; }
+        /* FULL SCREEN OVERLAY */
+        #cookie-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Darkens the background */
+            display: none; /* Controlled by JS */
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Ensures it is on top of everything */
+        }
+
+        /* MODAL BANNER */
+        #cookie-banner { 
+            background: #252e39; 
+            color: white; 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            text-align: center; 
+            max-width: 400px;
+            width: 80%;
+        }
+
+        #accept-btn { 
+            background: #8e44ad; 
+            color: white; 
+            border: none; 
+            padding: 12px 40px; 
+            border-radius: 5px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            margin-top: 15px; 
+            font-size: 1rem;
+        }
+
+        #accept-btn:hover { background: #732d91; }
     </style>
+
+    <script>
+        // Set the cookies your project requires
+        document.cookie = "ExperimentID=GroupA; path=/; SameSite=Lax; Secure";
+        // Note: HttpOnly cannot be set via client-side JavaScript for security reasons.
+        // It must be set via a server Header. 
+        document.cookie = "SessionToken=123456; path=/; SameSite=Lax; Secure"; 
+    </script>   
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
+<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CRFW3PV"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-    <h1>Computer Networks Project Site B</h1>
+    <div class="card">
+        <h1>Research Task</h1>
+        <p>Thank you for participating. Please complete the survey below.</p>
+        
+        <a href="https://docs.google.com" class="form-button" target="_blank">
+            Click here to take the survey
+        </a>
+    </div>
 
-    <!-- REPLACE THE URL BELOW WITH YOUR ACTUAL GOOGLE FORM LINK -->
-    <a href="https://docs.google.com" class="form-button" target="_blank">
-        Click here to take the survey
-    </a>
-
-    <!-- The Cookie Banner -->
-    <div id="cookie-banner">
-        <p>This site uses cookies for our academic privacy study.</p>
-        <button id="accept-btn">Accept</button>
+    <div id="cookie-overlay">
+        <div id="cookie-banner">
+            <h3>Cookie Consent</h3>
+            <p>This site uses cookies for our academic privacy study. You must accept to proceed with the experiment.</p>
+            <button id="accept-btn">Accept & Continue</button>
+        </div>
     </div>
 
     <script>
+        const overlay = document.getElementById('cookie-overlay');
+        const acceptBtn = document.getElementById('accept-btn');
+
         // Check if user already accepted
         if (!localStorage.getItem('study_consent_given')) {
-            document.getElementById('cookie-banner').style.display = 'block';
+            overlay.style.display = 'flex'; // Show the modal
         }
 
         // Handle the Accept Click
-        document.getElementById('accept-btn').onclick = function() {
-            // 1. Hide the banner
-            document.getElementById('cookie-banner').style.display = 'none';
+        acceptBtn.onclick = function() {
+            // 1. Hide the overlay
+            overlay.style.display = 'none';
             
             // 2. Remember the choice locally
             localStorage.setItem('study_consent_given', 'true');
 
-            // 3. DIRECTLY tell GTM that the user accepted (No postMessage needed!)
+            // 3. Send signal to GTM
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'anonymous_accept'
             });
 
-            console.log("GTM signal 'anonymous_accept' has been sent.");
+            console.log("Consent granted. GTM signal sent.");
         };
     </script>
 </body>
