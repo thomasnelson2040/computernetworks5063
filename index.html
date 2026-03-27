@@ -3,29 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Networking Research Study</title>
-    
-    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="ed2b8d7a-bc19-4bf5-bba2-759a91ace3a7" data-blockingmode="auto" type="text/javascript"></script>
+    <title>Computer Networks Project Site B</title>
+
+    <!-- 1. PASTE YOUR GTM HEAD SNIPPET HERE (The one starting with <script>) -->
+    <!-- [GTM HEAD CODE GOES HERE] -->
 
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8f9fa; display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }
-        .card { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); text-align: center; max-width: 400px; }
-        h1 { color: #333; }
-        .btn { display: inline-block; background: #007bff; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: bold; margin-top: 20px; transition: background 0.3s; }
-        .btn:hover { background: #0056b3; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background-color: #f4f4f9; }
+        h1 { color: #252e39; margin-bottom: 30px; }
+        .form-button { background-color: #8e44ad; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.2s; }
+        .form-button:hover { transform: scale(1.05); background-color: #732d91; }
+        
+        /* Banner Styles */
+        #cookie-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 500px; background: #252e39; color: white; padding: 20px; border-radius: 12px; display: none; box-shadow: 0 10px 25px rgba(0,0,0,0.3); text-align: center; z-index: 1000; }
+        #accept-btn { background: #8e44ad; color: white; border: none; padding: 10px 40px; border-radius: 5px; cursor: pointer; font-weight: bold; margin-top: 10px; }
     </style>
-    </script>
-    <script>
-        // This sets a cookie with the attributes your project asks for
-        document.cookie = "ExperimentID=GroupA; path=/; SameSite=Lax; Secure";
-        document.cookie = "SessionToken=123456; path=/; HttpOnly; Secure"; 
-    </script>   
 </head>
 <body>
-    <div class="card">
-        <h1>Research Task</h1>
-        <p>Thank you for participating. Please respond to the cookie preferences banner and then click the button below to start.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScdsu7F7Fv0qF-Dnu9o8Y7F4IOHIZcUgb7vNEu5vzM8IAnrrA/viewform?usp=header" class="btn">Start Experiment</a>
+    <!-- 2. PASTE YOUR GTM BODY SNIPPET HERE (The one starting with <noscript>) -->
+    <!-- [GTM BODY CODE GOES HERE] -->
+
+    <h1>Computer Networks Project Site B</h1>
+
+    <!-- REPLACE THE URL BELOW WITH YOUR ACTUAL GOOGLE FORM LINK -->
+    <a href="https://docs.google.com" class="form-button" target="_blank">
+        Click here to take the survey
+    </a>
+
+    <!-- The Cookie Banner -->
+    <div id="cookie-banner">
+        <p>This site uses cookies for our academic privacy study.</p>
+        <button id="accept-btn">Accept</button>
     </div>
+
+    <script>
+        // Check if user already accepted
+        if (!localStorage.getItem('study_consent_given')) {
+            document.getElementById('cookie-banner').style.display = 'block';
+        }
+
+        // Handle the Accept Click
+        document.getElementById('accept-btn').onclick = function() {
+            // 1. Hide the banner
+            document.getElementById('cookie-banner').style.display = 'none';
+            
+            // 2. Remember the choice locally
+            localStorage.setItem('study_consent_given', 'true');
+
+            // 3. DIRECTLY tell GTM that the user accepted (No postMessage needed!)
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+                'event': 'anonymous_accept'
+            });
+
+            console.log("GTM signal 'anonymous_accept' has been sent.");
+        };
+    </script>
 </body>
 </html>
