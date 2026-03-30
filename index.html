@@ -107,9 +107,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <script>
         // Set the experimental cookies immediately on load
-        document.cookie = "ExperimentID=GroupA; path=/; SameSite=Lax; Secure";
-        document.cookie = "SessionToken=123456; path=/; SameSite=Lax; Secure"; 
-    </script>   
+        document.cookie = "ExperimentID=GroupB; path=/; SameSite=Lax; Secure";
+        function generateSessionID() {
+        return 'ID-' + Math.random().toString(36).substr(2, 9);
+    }
+
+    // Check if a SessionID already exists so we don't overwrite it on refresh
+    let sessionID = document.cookie.split('; ').find(row => row.startsWith('SessionToken='));
+    
+    if (!sessionID) {
+        // Generate a brand new one
+        const newID = generateSessionID();
+        document.cookie = "SessionToken=" + newID + "; path=/; SameSite=Lax; Secure";
+        window.currentSessionID = newID; // Store in memory to send to GTM later
+    } else {
+        window.currentSessionID = sessionID.split('=')[1];
+    }
+</script>
 </head>
 <body>
 
