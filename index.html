@@ -163,9 +163,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         // SIGNAL TO GTM
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
-            'event': 'anonymous_accept_site_B', // Changed to Site B for your specific setup
-            'participant_id': newID,
-            'experiment_id': expID
+            'event': 'anonymous_accept', // Changed to Site B for your specific setup
+            'participant_id': newID
         });
 
         console.log("Consent recorded. IDs established: " + newID);
