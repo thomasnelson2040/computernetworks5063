@@ -104,26 +104,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         #accept-btn:hover { background: #a55ecd; }
     </style>
-
-    <script>
-        // Set the experimental cookies immediately on load
-        document.cookie = "ExperimentID=GroupB; path=/; SameSite=Lax; Secure";
-        function generateSessionID() {
-        return 'ID-' + Math.random().toString(36).substr(2, 9);
-    }
-
-    // Check if a SessionID already exists so we don't overwrite it on refresh
-    let sessionID = document.cookie.split('; ').find(row => row.startsWith('SessionToken='));
-    
-    if (!sessionID) {
-        // Generate a brand new one
-        const newID = generateSessionID();
-        document.cookie = "SessionToken=" + newID + "; path=/; SameSite=Lax; Secure";
-        window.currentSessionID = newID; // Store in memory to send to GTM later
-    } else {
-        window.currentSessionID = sessionID.split('=')[1];
-    }
-</script>
 </head>
 <body>
 
@@ -150,32 +130,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 
-    <script>
-        const overlay = document.getElementById('cookie-overlay');
-        const acceptBtn = document.getElementById('accept-btn');
+   <script>
+    const overlay = document.getElementById('cookie-overlay');
+    const acceptBtn = document.getElementById('accept-btn');
 
-        // Check if user already accepted
-        if (!localStorage.getItem('study_consent_given')) {
-            overlay.style.display = 'flex'; // This centers the banner and blocks the page
-        }
+    // 1. Check if user already accepted
+    if (!localStorage.getItem('study_consent_given')) {
+        overlay.style.display = 'flex'; 
+    }
 
-        // Handle the Accept Click
-        acceptBtn.onclick = function() {
-            // 1. Hide the overlay to reveal the site
-            overlay.style.display = 'none';
-            
-            // 2. Remember the choice
-            localStorage.setItem('study_consent_given', 'true');
+    // Helper to create random ID
+    function generateSessionID() {
+        return 'ID-' + Math.random().toString(36).substr(2, 9);
+    }
 
-            // 3. Signal to Google Tag Manager
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                'event': 'anonymous_accept',
-                'participant_id': window.currentSessionID
-            });
+    // 2. Handle the Accept Click
+    acceptBtn.onclick = function() {
+        // HIDE OVERLAY
+        overlay.style.display = 'none';
+        
+        // SET LOCAL STORAGE
+        localStorage.setItem('study_consent_given', 'true');
 
-            console.log("Consent recorded. Experiment starting.");
-        };
-    </script>
+        // GENERATE IDS ONLY NOW
+        const newID = generateSessionID();
+        const expID = "GroupB";
+
+        // SET ACTUAL BROWSER COOKIES
+        document.cookie = "ExperimentID=" + expID + "; path=/; SameSite=Lax; Secure";
+        document.cookie = "SessionToken=" + newID + "; path=/; SameSite=Lax; Secure";
+
+        // SIGNAL TO GTM
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            'event': 'anonymous_accept_site_B', // Changed to Site B for your specific setup
+            'participant_id': newID,
+            'experiment_id': expID
+        });
+
+        console.log("Consent recorded. IDs established: " + newID);
+    };
+</script>
 </body>
 </html>
